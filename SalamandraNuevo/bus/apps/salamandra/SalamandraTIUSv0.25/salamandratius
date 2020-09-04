@@ -1,0 +1,65 @@
+#!/bin/bash
+# Demonio para el funcionamiento de Salamandra.
+export DISPLAY=:0.0
+
+i="0"
+while true
+do
+	sleep 4
+	# Controlamos si esta introducida la tarjeta.
+	estadoTarjeta=`/usr/bin/python3 /etc/bus/apps/salamandra/SalamandraTIUSv0.25/getATR3`
+	echo $estadoTarjeta
+
+	if [ $estadoTarjeta = "ATR:CORRECTO" ];then
+		echo "TARJETA CORRECTA\n" 
+		if [ $i = "1" ];then
+			
+			xinput set-prop 9 'Device Enabled' 1
+			xinput set-prop 10 'Device Enabled' 1
+			xinput set-prop 11 'Device Enabled' 1
+
+			kill -9 `ps -ef | grep imagen | awk '{print $2}'`
+			# Desbloqueamos el teclado.
+			
+			
+		fi
+		i="0"
+	else
+		if [ $i = "0" ];then
+			echo "TARJETA INCORRECTA" 
+			# Cierra la ventana con la imagen, por si estuviese abierta.
+			kill -9 `ps -ef | grep win_vst | awk '{print $2}'`
+			sleep 1
+			# Mostramos la ventana con la imagen del salamandra.
+			/usr/bin/python3 /etc/bus/apps/salamandra/SalamandraTIUSv0.25/imagen.py &
+			sleep 1
+			# Matamos el proceso del firefox.
+			kill -9 `ps -ef | grep firefox | awk '{print $2}'`
+			kill -9 `ps -ef | grep chrome | awk '{print $2}'`
+			
+			# Establecemos que ya se ha detectado que no hay tarjeta, para mostrar solo una vez la ventana.
+			i="1"
+
+			# Bloqueamos el teclado.
+			xinput set-prop 9 'Device Enabled' 0
+			xinput set-prop 10 'Device Enabled' 0
+			xinput set-prop 11 'Device Enabled' 0
+			pkill xfce4-popup-whiskermenu
+
+		else
+			echo "TARJETA INCORRECTA"
+			kill -9 `ps -ef | grep firefox | awk '{print $2}'`
+			kill -9 `ps -ef | grep chrome | awk '{print $2}'`
+			# Bloqueamos el teclado.
+			xinput set-prop 9 'Device Enabled' 0
+			xinput set-prop 10 'Device Enabled' 0
+			xinput set-prop 11 'Device Enabled' 0
+			pkill xfce4-popup-whiskermenu
+		fi
+	fi
+
+done	
+
+
+
+

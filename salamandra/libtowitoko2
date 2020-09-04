@@ -1,0 +1,4 @@
+FRIENDLYNAME      "Towitoko Chipdrive Reader"
+DEVICENAME        /dev/ttyS0
+LIBPATH           /usr/lib/libtowitoko.so.2.0.0
+CHANNELID         0x0103F8

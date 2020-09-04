@@ -1,0 +1,29 @@
+#!/bin/sh
+
+prog="/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius"
+
+start() {	
+	echo -n $"Starting $prog:\n"
+	sh $prog
+}
+
+stop() {	
+	echo -n $"Stopping $prog:\n"
+	kill -9 `ps -ef | grep salamandratius | awk '{print $2}'`
+	kill -9 `ps -ef | grep win_vst | awk '{print $2}'`
+}
+
+case "$1" in	
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	*)		
+	
+	echo $"Usage: $0 {start|stop}"
+
+esac
+exit
+

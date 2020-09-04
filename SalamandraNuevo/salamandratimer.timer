@@ -1,0 +1,10 @@
+[Unit]
+Description=timer salamandra
+
+[Timer]
+# Time to wait after booting before it run for first time
+OnBootSec=50s
+Unit=salamandra.service
+
+[Install]
+WantedBy=default.target

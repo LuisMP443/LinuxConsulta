@@ -1,0 +1,15 @@
+[Unit]
+Description=Servicio SalamandraTIUS
+After=syslog.target network.target remote-fs.target nss-lookup.target salamandratimer.service
+
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/bus/apps/salamandra/SalamandraTIUSv0.25/
+ExecStart=/bin/bash /etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius
+ExecStop=/usr/bin/pkill -9 salamandratius
+Restart=on-failure
+LimitNOFILE=10000
+
+[Install]
+WantedBy=multi-user.target
