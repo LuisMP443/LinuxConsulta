@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#Bloqueador de pantalla y teclado
+i3lock -e -u -t -i /etc/bus/apps/salamandra/SalamandraTIUSv0.25/FondoSalamandraTIUS.png
+
+while true
+do
+	echo "TARJETA INCORRECTA" 
+	kill -9 `ps -ef | grep firefox | awk '{print $2}'`
+	kill -9 `ps -ef | grep chrome | awk '{print $2}'`
+	pkill soffice*
+	pkill libreoffice*
+	# Establecemos que ya se ha detectado que no hay tarjeta, para mostrar solo una vez la ventana.
+	# Bloqueamos el teclado.
+	#xinput set-prop 9 'Device Enabled' 0
+	#xinput set-prop 10 'Device Enabled' 0
+	#xinput set-prop 11 'Device Enabled' 0
+	#pkill xfce4-popup-whiskermenu
+done	

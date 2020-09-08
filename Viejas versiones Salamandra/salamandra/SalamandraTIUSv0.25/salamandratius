@@ -1,0 +1,48 @@
+#!/bin/bash
+# Demonio para el funcionamiento de Salamandra.
+export DISPLAY=:0.0
+
+i="0"
+while true
+do
+	sleep 4
+	# Controlamos si esta introducida la tarjeta.
+	estadoTarjeta=`/usr/bin/python /etc/bus/apps/salamandra/SalamandraTIUSv0.25/getATR3`
+	echo $estadoTarjeta
+
+	if [ $estadoTarjeta = "ATR:CORRECTO" ];then
+		echo "TARJETA CORRECTA\n" 
+		if [ $i = "1" ];then
+			kill -9 `ps -ef | grep win_vst | awk '{print $2}'`
+			# Desbloqueamos el teclado.
+			xkbcomp /etc/bus/apps/salamandra/SalamandraTIUSv0.25/xkb_desbloqueado.dump $DISPLAY
+		fi
+		i="0"
+	else
+		if [ $i = "0" ];then
+			echo "TARJETA INCORRECTA" 
+			# Cierra la ventana con la imagen, por si estuviese abierta.
+			kill -9 `ps -ef | grep win_vst | awk '{print $2}'`
+			sleep 1
+			# Mostramos la ventana con la imagen del salamandra.
+			/usr/bin/python /etc/bus/apps/salamandra/SalamandraTIUSv0.25/win_vst.py &
+			sleep 1
+			# Matamos el proceso del firefox.
+			kill -9 `ps -ef | grep firefox | awk '{print $2}'`
+			
+			# Establecemos que ya se ha detectado que no hay tarjeta, para mostrar solo una vez la ventana.
+			i="1"
+
+			# Bloqueamos el teclado.
+			xkbcomp /etc/bus/apps/salamandra/SalamandraTIUSv0.25/xkb_bloqueado.dump $DISPLAY
+		else
+			echo "TARJETA INCORRECTA"
+			kill -9 `ps -ef | grep firefox | awk '{print $2}'`
+		fi
+	fi
+
+done	
+
+
+
+

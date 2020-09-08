@@ -1,0 +1,6 @@
+Paso 1: Copiar carpeta bus a /etc/
+Paso 2: Instalar dependencias
+	- Instalar python3-pyscard
+	- Instalar pcsc y pcscd
+	- Instalar i3lock
+	

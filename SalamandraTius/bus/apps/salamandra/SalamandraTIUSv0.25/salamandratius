@@ -1,0 +1,87 @@
+#!/bin/bash
+# Demonio para el funcionamiento de Salamandra.
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+export DISPLAY=:0.0
+
+sleep 5
+i=0
+
+while true
+do
+	sleep 5
+	# Controlamos si esta introducida la tarjeta.
+	estadoTarjeta=`/usr/bin/python3 /etc/bus/apps/salamandra/SalamandraTIUSv0.25/getATR3`
+	echo $estadoTarjeta
+
+	if [ $estadoTarjeta = "ATR:CORRECTO" ];then
+		echo "TARJETA CORRECTA\n" 
+		if [ $i -eq 1 ];then
+			xinput set-prop 8 'Device Enabled' 1
+			xinput set-prop 9 'Device Enabled' 1
+			xinput set-prop 10 'Device Enabled' 1
+			xinput set-prop 11 'Device Enabled' 1
+
+			pkill i3lock 
+			pkill feh
+			#pkill xtrlock
+			# Desbloqueamos el teclado.
+			/home/bibliotecario/avisoencendidosalamandra.sh
+			
+				
+		fi
+		i=0
+
+	else
+		if [ $i -eq 0 ];then
+			echo "TARJETA INCORRECTA" 
+			# Cierra la ventana con la imagen, por si estuviese abierta.
+			kill -9 `ps -ef | grep imagen | awk '{print $2}'`
+			pkill i3lock
+			pkill feh
+			#pkill xtrlock
+			sleep 1
+			# Mostramos la ventana con la imagen del salamandra.
+			#/usr/bin/python3 /etc/bus/apps/salamandra/SalamandraTIUSv0.25/imagen.py &
+			# Bloqueamos el teclado y el ratón.
+			xinput set-prop 8 'Device Enabled' 0
+			xinput set-prop 9 'Device Enabled' 0
+			xinput set-prop 10 'Device Enabled' 0
+			xinput set-prop 11 'Device Enabled' 0
+			#/etc/bus/apps/salamandra/SalamandraTIUSv0.25/convertidor.sh
+			i3lock -e --color=573a58 -u -i /etc/bus/apps/salamandra/SalamandraTIUSv0.25/FondoSalamandraTIUS.png
+			#feh -Y --fullscreen -Z -N --cycle-once  /etc/bus/apps/salamandra/SalamandraTIUSv0.25/FondoSalamandraTIUS.png &
+			
+			sleep 1
+			# Matamos el proceso del firefox.
+			#kill -9 `ps -ef | grep firefox | awk '{print $2}'`
+			#kill -9 `ps -ef | grep chrome | awk '{print $2}'`
+			pkill firefox
+			pkill chrome
+			pkill soffice*
+			pkill libreoffice*
+			# Establecemos que ya se ha detectado que no hay tarjeta, para mostrar solo una vez la ventana.
+			i=1
+
+		else
+			echo "TARJETA INCORRECTA"
+			#kill -9 `ps -ef | grep firefox | awk '{print $2}'`
+			#kill -9 `ps -ef | grep chrome | awk '{print $2}'`
+			pkill firefox
+			pkill chrome
+			pkill soffice*
+			pkill libreoffice*
+			# Bloqueamos el teclado y raton.
+			xinput set-prop 8 'Device Enabled' 0
+			xinput set-prop 9 'Device Enabled' 0
+			xinput set-prop 10 'Device Enabled' 0
+			xinput set-prop 11 'Device Enabled' 0
+		fi
+
+		
+	fi
+
+done	
+
+
+
+

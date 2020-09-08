@@ -1,0 +1,42 @@
+#!/bin/bash
+# Demonio para el funcionamiento de Salamandra.
+export DISPLAY=:0.0
+
+
+i=0
+while true
+do
+	sleep 4
+	# Controlamos si esta introducida la tarjeta.
+	estadoTarjeta=`/usr/bin/python3 /etc/bus/apps/salamandra/SalamandraTIUSv0.25/getATR3`
+	echo $estadoTarjeta
+
+	if [ $estadoTarjeta = "ATR:CORRECTO" ];then
+		echo "TARJETA CORRECTA\n" 
+		if [ $i -eq 1 ];then
+			xinput set-prop 9 'Device Enabled' 1
+			xinput set-prop 10 'Device Enabled' 1
+			xinput set-prop 11 'Device Enabled' 1
+
+			#kill -9 `ps -ef | grep imagen | awk '{print $2}'`
+			# Desbloqueamos el teclado.
+			pkill i3lock
+			/home/bibliotecario/avisoencendidosalamandra.sh
+
+				
+		fi
+		i=0
+
+	else
+		/etc/bus/apps/salamandra/SalamandraTIUSv0.25/bloqueador &
+		/etc/bus/apps/salamandra/SalamandraTIUSv0.25/detector &
+		wait
+
+		
+	fi
+
+done	
+
+
+
+

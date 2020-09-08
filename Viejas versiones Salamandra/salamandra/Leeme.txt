@@ -1,0 +1,10 @@
+Instrucciones para instalar Salamandra Mayo_2013.
+
+
+-Ejecutamos el Script 'Instalar_Salamandra.sh'.
+
+
+ANEXO:
+Desinstalación del demonio:
+	update-rc.d -f /etc/init.d/salamandratiusDaemon remove
+	unlink /etc/init.d/salamandratiusDaemon

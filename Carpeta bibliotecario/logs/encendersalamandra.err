@@ -1,0 +1,58 @@
+Invalid MIT-MAGIC-COOKIE-1 keyi3lock: Could not connect to X11, maybe you need to set DISPLAY?
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 40: kill: (1074) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 41: kill: (1079) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1367) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1371) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1434) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1438) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1452) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1456) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1471) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1475) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1492) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1496) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1511) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1515) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1534) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1538) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1564) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1568) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1583) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1587) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1601) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1605) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1627) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1631) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1651) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1655) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1684) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1688) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1702) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1706) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1722) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1726) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1740) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1744) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 55: kill: (1758) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 56: kill: (1762) - No existe el proceso
+i3lock: Cannot grab pointer/keyboard
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 40: kill: (1788) - No existe el proceso
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 41: kill: (1792) - No existe el proceso
+Traceback (most recent call last):
+  File "/etc/bus/apps/salamandra/SalamandraTIUSv0.25/getATR3", line 37, in <module>
+    for reader in readers():
+  File "/usr/local/lib/python3.6/dist-packages/smartcard/System.py", line 42, in readers
+    return smartcard.reader.ReaderFactory.ReaderFactory.readers(groups)
+  File "/usr/local/lib/python3.6/dist-packages/smartcard/reader/ReaderFactory.py", line 58, in readers
+    zreaders += fm(groups)
+  File "/usr/local/lib/python3.6/dist-packages/smartcard/pcsc/PCSCReader.py", line 110, in readers
+    hcontext = PCSCContext().getContext()
+  File "/usr/local/lib/python3.6/dist-packages/smartcard/pcsc/PCSCContext.py", line 56, in __init__
+    self.renewContext()
+  File "/usr/local/lib/python3.6/dist-packages/smartcard/pcsc/PCSCContext.py", line 70, in renewContext
+    PCSCContext.instance = PCSCContext.__PCSCContextSingleton()
+  File "/usr/local/lib/python3.6/dist-packages/smartcard/pcsc/PCSCContext.py", line 40, in __init__
+    raise EstablishContextException(hresult)
+smartcard.pcsc.PCSCExceptions.EstablishContextException: 'Failure to establish context: RPC transport error.'
+/etc/bus/apps/salamandra/SalamandraTIUSv0.25/salamandratius: línea 13: [: =: se esperaba un operador unario
+i3lock: Could not connect to X11, maybe you need to set DISPLAY?

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+i=0
+while [$i -eq 0]
+do
+	estadoTarjeta=`/usr/bin/python3 /etc/bus/apps/salamandra/SalamandraTIUSv0.25/getATR3`
+	echo $estadoTarjeta
+
+	if [ $estadoTarjeta = "ATR:CORRECTO" ];
+		pkill bloqueador
+	fi
+
+done	
