@@ -3,4 +3,6 @@ Paso 2: Instalar dependencias
 	- Instalar python3-pyscard
 	- Instalar pcsc y pcscd
 	- Instalar i3lock
-	
+	- Instalar feh
+Las dependencias se pueden instalar con:
+sudo apt install python3-pyscard pcsc pcscd i3lock feh
